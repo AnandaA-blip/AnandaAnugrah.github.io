@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>RFM Analysis — Medical Sales — Ananda A.</title>
+<meta name="description" content="RFM customer segmentation analysis applied to a medical products distributor to identify high-value, at-risk, and dormant customers and guide retention strategy."/>
+
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=zodiak@400,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>
+:root,[data-theme="light"]{--color-bg:#f6f7f9;--color-surface:#f9fafb;--color-surface-2:#ffffff;--color-surface-offset:#eef0f4;--color-surface-offset-2:#e5e8ee;--color-surface-dynamic:#dce0e9;--color-divider:#d4d8e2;--color-border:#c8cdd9;--color-text:#1a1f2e;--color-text-muted:#5a6378;--color-text-faint:#a0a8bb;--color-text-inverse:#f6f7f9;--color-primary:#0c7b8a;--color-primary-hover:#0a6270;--color-primary-active:#084e59;--color-primary-highlight:#cce4e8;--color-accent:#e07a3a;--color-success:#2a7a4b;--color-success-highlight:#cce5d6;--radius-sm:0.375rem;--radius-md:0.5rem;--radius-lg:0.75rem;--radius-xl:1rem;--radius-2xl:1.5rem;--radius-full:9999px;--shadow-sm:0 1px 3px oklch(0.2 0.02 240/0.08);--shadow-md:0 4px 16px oklch(0.2 0.02 240/0.1);--shadow-lg:0 12px 40px oklch(0.2 0.02 240/0.14);--transition-interactive:180ms cubic-bezier(0.16,1,0.3,1);--font-display:'Zodiak','Georgia',serif;--font-body:'Satoshi','Inter',sans-serif;--font-mono:'JetBrains Mono',monospace;--text-xs:clamp(0.75rem,0.7rem + 0.25vw,0.875rem);--text-sm:clamp(0.875rem,0.8rem + 0.35vw,1rem);--text-base:clamp(1rem,0.95rem + 0.25vw,1.125rem);--text-lg:clamp(1.125rem,1rem + 0.75vw,1.5rem);--text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);--text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);--text-3xl:clamp(2.5rem,1rem + 4vw,5rem);--space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--space-20:5rem;--space-24:6rem;--content-narrow:640px;--content-default:960px;--content-wide:1200px;}
+[data-theme="dark"]{--color-bg:#0d1117;--color-surface:#131920;--color-surface-2:#192028;--color-surface-offset:#1a2230;--color-surface-offset-2:#1f2838;--color-surface-dynamic:#243040;--color-divider:#263040;--color-border:#2e3d50;--color-text:#d4dae6;--color-text-muted:#7a8ba3;--color-text-faint:#4a5a6e;--color-text-inverse:#0d1117;--color-primary:#38b2be;--color-primary-hover:#4ecad6;--color-primary-active:#65dae6;--color-primary-highlight:#0e2e35;--color-accent:#f09458;--color-success:#4db87a;--color-success-highlight:#0d2e1e;--shadow-sm:0 1px 3px oklch(0 0 0/0.3);--shadow-md:0 4px 16px oklch(0 0 0/0.4);--shadow-lg:0 12px 40px oklch(0 0 0/0.5);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth;scroll-padding-top:4rem;}
+body{min-height:100dvh;line-height:1.6;font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background-color:var(--color-bg);transition:background-color .25s ease,color .25s ease;}
+img,svg{display:block;max-width:100%;}
+h1,h2,h3,h4,h5,h6{text-wrap:balance;line-height:1.15;}
+p,li{text-wrap:pretty;max-width:72ch;}
+button{cursor:pointer;background:none;border:none;}
+a,button{transition:color var(--transition-interactive),background var(--transition-interactive),border-color var(--transition-interactive);}
+:focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm);}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
+.nav{position:sticky;top:0;z-index:100;background:oklch(from var(--color-bg) l c h / 0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--color-divider);padding-block:var(--space-4);}
+.nav__inner{max-width:var(--content-wide);margin-inline:auto;padding-inline:var(--space-6);display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);}
+.nav__logo{display:flex;align-items:center;gap:var(--space-3);text-decoration:none;color:var(--color-text);}
+.nav__logo-name{font-family:var(--font-display);font-size:var(--text-sm);font-weight:700;}
+.nav__logo-role{font-size:var(--text-xs);color:var(--color-text-muted);}
+.nav__links{display:none;align-items:center;gap:var(--space-6);list-style:none;}
+@media(min-width:768px){.nav__links{display:flex;}}
+.nav__links a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;font-weight:500;}
+.nav__links a:hover{color:var(--color-primary);}
+.nav__actions{display:flex;align-items:center;gap:var(--space-3);}
+.theme-toggle{width:36px;height:36px;border-radius:var(--radius-md);color:var(--color-text-muted);display:flex;align-items:center;justify-content:center;}
+.theme-toggle:hover{color:var(--color-text);background:var(--color-surface-offset);}
+.btn{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);font-weight:600;padding:var(--space-2) var(--space-5);border-radius:var(--radius-full);text-decoration:none;line-height:1.4;border:none;cursor:pointer;}
+.btn--primary{background:var(--color-primary);color:#fff;}
+.btn--primary:hover{background:var(--color-primary-hover);}
+.btn--outline{background:transparent;color:var(--color-primary);border:1.5px solid var(--color-primary);}
+.btn--outline:hover{background:var(--color-primary-highlight);}
+.btn--ghost{background:transparent;color:var(--color-text-muted);}
+.btn--ghost:hover{color:var(--color-text);background:var(--color-surface-offset);}
+.nav-cta{display:none;}
+@media(min-width:640px){.nav-cta{display:inline-flex;}}
+.footer{background:var(--color-surface);border-top:1px solid var(--color-divider);}
+.tool-chip{display:inline-flex;align-items:center;background:var(--color-surface-offset);color:var(--color-text-muted);font-size:var(--text-xs);font-weight:600;padding:3px var(--space-3);border-radius:var(--radius-full);border:1px solid var(--color-border);}
+.project-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;background:var(--color-surface-dynamic);color:var(--color-text-muted);padding:2px 8px;border-radius:var(--radius-full);}
+.project-tag--primary{background:var(--color-primary-highlight);color:var(--color-primary);}
+.section-label{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-primary);margin-bottom:var(--space-3);}
+.section-heading{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:700;letter-spacing:-.025em;color:var(--color-text);margin-bottom:var(--space-4);line-height:1.2;}
+.insight-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-5) var(--space-6);margin-bottom:var(--space-4);}
+.insight-card h4{font-weight:700;font-size:var(--text-sm);color:var(--color-text);margin-bottom:var(--space-2);}
+.insight-card p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:var(--space-4);margin-block:var(--space-8);}
+.kpi-box{background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);text-align:center;}
+.kpi-box__val{font-family:var(--font-display);font-weight:700;font-size:var(--text-xl);color:var(--color-primary);line-height:1;margin-bottom:var(--space-2);}
+.kpi-box__lbl{font-size:var(--text-xs);color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.05em;}
+.step-list{display:flex;flex-direction:column;gap:var(--space-4);counter-reset:steps;}
+.step-item{display:flex;gap:var(--space-4);counter-increment:steps;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--color-primary);color:#fff;font-size:var(--text-xs);font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.step-item p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;}
+.step-item strong{color:var(--color-text);}
+.chart-placeholder{background:linear-gradient(135deg,var(--color-surface-offset) 0%,var(--color-surface-dynamic) 100%);border:2px dashed var(--color-border);border-radius:var(--radius-xl);padding:var(--space-12);text-align:center;color:var(--color-text-muted);font-size:var(--text-sm);}
+.chart-placeholder .icon{margin-inline:auto;margin-bottom:var(--space-4);color:var(--color-text-faint);}
+.next-projects{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);margin-top:var(--space-8);}
+@media(max-width:640px){.next-projects{grid-template-columns:1fr;}}
+.next-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-5);text-decoration:none;display:flex;flex-direction:column;gap:var(--space-2);transition:box-shadow var(--transition-interactive),transform var(--transition-interactive);}
+.next-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
+.next-card__label{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-primary);}
+.next-card__title{font-family:var(--font-display);font-weight:700;font-size:var(--text-base);color:var(--color-text);line-height:1.2;}
+.next-card__arrow{font-size:var(--text-sm);color:var(--color-text-faint);margin-top:auto;}
+</style>
+<style>
+.case-hero{padding-block:clamp(3rem,8vw,5rem);background:linear-gradient(135deg,var(--color-surface) 0%,var(--color-bg) 100%);border-bottom:1px solid var(--color-divider);}
+.case-hero__inner{max-width:var(--content-default);margin-inline:auto;padding-inline:var(--space-6);}
+.breadcrumb{display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);color:var(--color-text-muted);margin-bottom:var(--space-5);}
+.breadcrumb a{color:var(--color-text-muted);text-decoration:none;}
+.breadcrumb a:hover{color:var(--color-primary);}
+.breadcrumb span{color:var(--color-text-faint);}
+.case-title{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:700;letter-spacing:-.025em;color:var(--color-text);margin-bottom:var(--space-4);line-height:1.1;}
+.case-meta{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-bottom:var(--space-6);}
+.case-subtitle{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;max-width:60ch;}
+.case-body{max-width:var(--content-default);margin-inline:auto;padding-inline:var(--space-6);padding-block:clamp(3rem,6vw,5rem);}
+.case-section{margin-bottom:var(--space-12);}
+.case-section h3{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-text);margin-bottom:var(--space-4);padding-bottom:var(--space-3);border-bottom:2px solid var(--color-primary);display:inline-block;}
+.case-section p{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.75;margin-bottom:var(--space-4);}
+.recruiter-callout{background:var(--color-primary-highlight);border:1px solid var(--color-primary);border-radius:var(--radius-xl);padding:var(--space-6);}
+.recruiter-callout h4{font-weight:700;font-size:var(--text-sm);color:var(--color-primary);margin-bottom:var(--space-3);text-transform:uppercase;letter-spacing:.06em;}
+.recruiter-callout p{font-size:var(--text-sm);color:oklch(from var(--color-primary) l c h / 0.9);line-height:1.65;max-width:none;}
+</style>
+</head>
+<body>
+<a href="#main" class="sr-only">Skip to main content</a>
+<!-- NAVIGATION -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">
+      <svg aria-hidden="true" width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="8" fill="var(--color-primary)"/>
+        <path d="M8 23L13 9l5 9 3-5 3 10" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="24" cy="10" r="2.5" fill="white" opacity="0.7"/>
+      </svg>
+      <div>
+        <div class="nav__logo-name">Ananda A.</div>
+        <div class="nav__logo-role">Healthcare Data Analyst</div>
+      </div>
+    </a>
+    <ul class="nav__links" role="list">
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#skills">Skills</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav__actions">
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="index.html#contact" class="btn btn--primary nav-cta">Hire Me</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<section class="case-hero">
+  <div class="case-hero__inner">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="index.html#projects">Projects</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">RFM Analysis — Medical Sales</span>
+    </nav>
+    <div class="case-meta">
+      <span class="project-tag project-tag--primary">Medical Sales Analytics</span>
+      <span class="project-tag">Case Study</span>
+    </div>
+    <h1 class="case-title">RFM Analysis: Customer Segmentation for Medical Sales</h1>
+    <p class="case-subtitle">Not all customers are equal. This project applies RFM (Recency, Frequency, Monetary) analysis to a medical products distributor's sales data to segment customers by value, identify at-risk accounts, and recommend targeted retention strategies.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-6);">
+      <span class="tool-chip">Python</span> <span class="tool-chip">pandas</span> <span class="tool-chip">Looker Studio</span> <span class="tool-chip">Excel</span> <span class="tool-chip">matplotlib</span>
+    </div>
+    
+      <a href="https://github.com/AnandaA-blip/RFM-Analysis-Medical-Sales-" target="_blank" rel="noopener noreferrer" class="btn btn--outline" style="margin-top:var(--space-4);">
+        <i data-lucide="github" style="width:15px;height:15px;"></i>View on GitHub
+      </a>
+  </div>
+</section>
+
+<div class="case-body">
+
+  <!-- KPIs -->
+  <div class="kpi-row"><div class="kpi-box"><div class="kpi-box__val">RFM</div><div class="kpi-box__lbl">Framework</div></div>
+<div class="kpi-box"><div class="kpi-box__val">5 Segments</div><div class="kpi-box__lbl">Customer Groups</div></div>
+<div class="kpi-box"><div class="kpi-box__val">Python</div><div class="kpi-box__lbl">Analysis</div></div>
+<div class="kpi-box"><div class="kpi-box__val">Looker Studio</div><div class="kpi-box__lbl">Dashboard</div></div></div>
+
+  <!-- Problem -->
+  <div class="case-section">
+    <h3>The Business Problem</h3>
+    <p>A medical products distributor was treating all customers the same — equal marketing attention, equal outreach cadence, equal resources. This approach is inefficient: high-value customers may feel underserved while effort is wasted on dormant accounts. The business question was: Who are our most valuable customers? Who is at risk of churning? Which dormant accounts are worth re-engaging? RFM analysis provides a data-driven framework to answer all three.</p>
+  </div>
+
+  <!-- Dataset -->
+  <div class="case-section">
+    <h3>Dataset</h3>
+    <p>Historical sales transaction data from a medical products distributor, including customer IDs, transaction dates, product categories, and revenue per order. Data was processed using Python (pandas) to calculate the three RFM dimensions for each customer relative to a reference date. Looker Studio was used to build an interactive reporting dashboard.</p>
+  </div>
+
+  <!-- Process -->
+  <div class="case-section">
+    <h3>Analysis Process</h3>
+    <div class="step-list"><div class="step-item"><div class="step-num">1</div><p><strong>Data Preparation</strong> — Cleaned and standardized transaction records. Removed test accounts and incomplete orders. Calculated the analysis reference date (most recent transaction date in the dataset).</p></div>
+<div class="step-item"><div class="step-num">2</div><p><strong>RFM Score Calculation</strong> — Computed three metrics per customer: Recency (days since last purchase), Frequency (total number of transactions), and Monetary Value (total revenue generated). Each metric was scored on a 1–5 scale using quintile ranking.</p></div>
+<div class="step-item"><div class="step-num">3</div><p><strong>Customer Segmentation</strong> — Combined R, F, and M scores to assign each customer to a behavioral segment: Champions, Loyal Customers, At-Risk, Potential Loyalists, and Lost/Dormant. Segment rules were defined based on industry-standard RFM thresholds.</p></div>
+<div class="step-item"><div class="step-num">4</div><p><strong>Segment Profiling</strong> — Calculated the average revenue, order frequency, and recency for each segment. Identified which product categories were most popular within high-value segments.</p></div>
+<div class="step-item"><div class="step-num">5</div><p><strong>Dashboard & Recommendations</strong> — Built an interactive Looker Studio dashboard showing segment distribution, revenue concentration by segment, and a prioritized list of at-risk customers by account value.</p></div></div>
+  </div>
+
+  <!-- Visual placeholder -->
+  <div class="case-section">
+    <h3>Visual Output</h3>
+    <div class="chart-placeholder">
+      <div class="icon"><i data-lucide="bar-chart-2" style="width:40px;height:40px;"></i></div>
+      <p><strong>Replace this with your actual dashboard screenshot or Tableau/Looker Studio embed.</strong><br>
+      Export your dashboard as a PNG and add it here using: <br>
+      <code style="font-family:var(--font-mono);font-size:var(--text-xs);background:var(--color-surface-dynamic);padding:2px 6px;border-radius:var(--radius-sm);">&lt;img src="assets/project-rfm-dashboard.png" alt="Dashboard" width="960" height="540" loading="lazy"&gt;</code></p>
+    </div>
+  </div>
+
+  <!-- Insights -->
+  <div class="case-section">
+    <h3>Key Insights</h3>
+    <div class="insight-card"><h4>Revenue is Concentrated in a Small Customer Group</h4><p>The top 20% of customers (Champions and Loyal segments) contributed approximately 65–70% of total revenue — confirming a classic Pareto distribution in the customer base.</p></div>
+<div class="insight-card"><h4>At-Risk Customers Represent Significant Recoverable Revenue</h4><p>A segment of previously high-frequency customers showed declining recency, indicating early churn signals. Proactive outreach to this group has a higher ROI than acquiring new customers at equivalent revenue levels.</p></div>
+<div class="insight-card"><h4>Dormant Accounts Require Qualification Before Re-Engagement</h4><p>Many dormant accounts had low monetary value and low frequency, suggesting they were trial customers. Only a subset — those with historical high monetary value — are worth targeted re-engagement campaigns.</p></div>
+  </div>
+
+  <!-- Impact -->
+  <div class="case-section">
+    <h3>Business Impact</h3>
+    <p>The RFM segmentation provides the sales and marketing team with a clear prioritization framework: protect Champions with premium service, re-engage At-Risk high-value accounts first, and deprioritize low-value dormant accounts. If retention of at-risk accounts is improved by 20%, the estimated revenue protection impact is material for a business of this scale.</p>
+  </div>
+
+  <!-- Recruiter note -->
+  <div class="case-section">
+    <div class="recruiter-callout">
+      <h4>Why This Project Stands Out</h4>
+      <p>RFM analysis is a widely used, business-oriented segmentation method that directly connects to sales strategy — making it immediately understandable to non-technical stakeholders. The healthcare/medical context adds domain relevance. This project shows the ability to take a structured analytical method, apply it to real business data, and translate results into actionable recommendations — exactly what business analysts and healthcare data roles require.</p>
+    </div>
+  </div>
+
+  <!-- Next Projects -->
+  <div class="case-section">
+    <h3>More Projects</h3>
+    <div class="next-projects"><a href="project-tat.html" class="next-card"><span class="next-card__label">Next Project</span><span class="next-card__title">Clinical Lab TAT Optimization</span><span class="next-card__arrow">Read case study →</span></a>
+<a href="project-promo.html" class="next-card"><span class="next-card__label">Next Project</span><span class="next-card__title">Retail Promo Markdown Effectiveness Analysis</span><span class="next-card__arrow">Read case study →</span></a></div>
+    <div style="margin-top:var(--space-6);">
+      <a href="index.html#projects" class="btn btn--ghost">
+        <i data-lucide="arrow-left" style="width:15px;height:15px;"></i> Back to All Projects
+      </a>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer__bottom" style="border-top:1px solid var(--color-divider);padding:var(--space-8) var(--space-6);max-width:var(--content-wide);margin-inline:auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:var(--space-4);">
+    <p style="font-size:var(--text-xs);color:var(--color-text-faint);">© 2026 Ananda A. · Healthcare Data Analyst</p>
+    <div style="display:flex;gap:var(--space-3);">
+      <a href="index.html#projects" style="font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--color-text-muted)'">← All Projects</a>
+    </div>
+  </div>
+</footer>
+<script>
+lucide.createIcons();
+(function(){
+  const t=document.querySelector('[data-theme-toggle]'),r=document.documentElement;
+  let d=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  r.setAttribute('data-theme',d);
+  function updateIcon(){if(!t)return;t.innerHTML=d==='dark'?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';}
+  updateIcon();
+  t&&t.addEventListener('click',()=>{d=d==='dark'?'light':'dark';r.setAttribute('data-theme',d);updateIcon();});
+})();
+</script>
+</body>
+</html>
