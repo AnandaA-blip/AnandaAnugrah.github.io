@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ananda A. — Healthcare Data Analyst</title>
+<meta name="description" content="Healthcare Data Analyst with a background in Medical Laboratory Technology. I turn clinical and operational data into actionable insights using SQL, Python, Tableau, Looker Studio, and Excel." />
+<meta property="og:title" content="Ananda A. — Healthcare Data Analyst Portfolio" />
+<meta property="og:description" content="Healthcare Data Analyst portfolio — 3 data projects in clinical operations, medical sales, and retail analytics." />
+
+<!-- Fonts -->
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=zodiak@400,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<style>
+/* ============================================================
+   ART DIRECTION: Healthcare + Data Precision
+   Tone: clean, credible, calm authority
+   Palette: deep navy/slate surfaces, teal accent (clinical)
+   Typography: Zodiak (display) + Satoshi (body)
+   Density: spacious — portfolio/informational
+   ============================================================ */
+
+:root, [data-theme="light"] {
+  --color-bg:             #f6f7f9;
+  --color-surface:        #f9fafb;
+  --color-surface-2:      #ffffff;
+  --color-surface-offset: #eef0f4;
+  --color-surface-offset-2: #e5e8ee;
+  --color-surface-dynamic: #dce0e9;
+  --color-divider:        #d4d8e2;
+  --color-border:         #c8cdd9;
+  --color-text:           #1a1f2e;
+  --color-text-muted:     #5a6378;
+  --color-text-faint:     #a0a8bb;
+  --color-text-inverse:   #f6f7f9;
+  --color-primary:        #0c7b8a;
+  --color-primary-hover:  #0a6270;
+  --color-primary-active: #084e59;
+  --color-primary-highlight: #cce4e8;
+  --color-accent:         #e07a3a;
+  --color-accent-hover:   #c5622a;
+  --color-success:        #2a7a4b;
+  --color-success-highlight: #cce5d6;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 3px oklch(0.2 0.02 240 / 0.08);
+  --shadow-md: 0 4px 16px oklch(0.2 0.02 240 / 0.1);
+  --shadow-lg: 0 12px 40px oklch(0.2 0.02 240 / 0.14);
+  --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  --font-display: 'Zodiak', 'Georgia', serif;
+  --font-body: 'Satoshi', 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
+  --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
+  --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
+  --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
+  --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
+  --text-2xl:  clamp(2rem,     1.2rem  + 2.5vw,  3.5rem);
+  --text-3xl:  clamp(2.5rem,   1rem    + 4vw,    5rem);
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+  --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+  --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+  --content-narrow: 640px; --content-default: 960px; --content-wide: 1200px;
+}
+
+[data-theme="dark"] {
+  --color-bg:             #0d1117;
+  --color-surface:        #131920;
+  --color-surface-2:      #192028;
+  --color-surface-offset: #1a2230;
+  --color-surface-offset-2: #1f2838;
+  --color-surface-dynamic: #243040;
+  --color-divider:        #263040;
+  --color-border:         #2e3d50;
+  --color-text:           #d4dae6;
+  --color-text-muted:     #7a8ba3;
+  --color-text-faint:     #4a5a6e;
+  --color-text-inverse:   #0d1117;
+  --color-primary:        #38b2be;
+  --color-primary-hover:  #4ecad6;
+  --color-primary-active: #65dae6;
+  --color-primary-highlight: #0e2e35;
+  --color-accent:         #f09458;
+  --color-accent-hover:   #f4a872;
+  --color-success:        #4db87a;
+  --color-success-highlight: #0d2e1e;
+  --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.3);
+  --shadow-md: 0 4px 16px oklch(0 0 0 / 0.4);
+  --shadow-lg: 0 12px 40px oklch(0 0 0 / 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --color-bg: #0d1117; --color-surface: #131920; --color-surface-2: #192028;
+    --color-surface-offset: #1a2230; --color-surface-offset-2: #1f2838;
+    --color-surface-dynamic: #243040; --color-divider: #263040; --color-border: #2e3d50;
+    --color-text: #d4dae6; --color-text-muted: #7a8ba3; --color-text-faint: #4a5a6e;
+    --color-text-inverse: #0d1117; --color-primary: #38b2be; --color-primary-hover: #4ecad6;
+    --color-primary-active: #65dae6; --color-primary-highlight: #0e2e35;
+    --color-accent: #f09458; --color-success: #4db87a; --color-success-highlight: #0d2e1e;
+    --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.3);
+    --shadow-md: 0 4px 16px oklch(0 0 0 / 0.4);
+    --shadow-lg: 0 12px 40px oklch(0 0 0 / 0.5);
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility; scroll-behavior: smooth;
+  scroll-padding-top: var(--space-16);
+}
+body {
+  min-height: 100dvh; line-height: 1.6;
+  font-family: var(--font-body); font-size: var(--text-base);
+  color: var(--color-text); background-color: var(--color-bg);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto; }
+ul[role="list"], ol[role="list"] { list-style: none; }
+input, button, textarea, select { font: inherit; color: inherit; }
+h1, h2, h3, h4, h5, h6 { text-wrap: balance; line-height: 1.15; }
+p, li, figcaption { text-wrap: pretty; max-width: 72ch; }
+::selection { background: oklch(from var(--color-primary) l c h / 0.2); color: var(--color-text); }
+:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+a, button, [role="button"] {
+  transition: color var(--transition-interactive), background var(--transition-interactive),
+              border-color var(--transition-interactive), box-shadow var(--transition-interactive);
+}
+button { cursor: pointer; background: none; border: none; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0; }
+
+/* ============ LAYOUT ============ */
+.container { max-width: var(--content-default); margin-inline: auto; padding-inline: var(--space-6); }
+.container--wide { max-width: var(--content-wide); margin-inline: auto; padding-inline: var(--space-6); }
+.section { padding-block: clamp(var(--space-16), 8vw, var(--space-24)); }
+
+/* ============ NAVIGATION ============ */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: oklch(from var(--color-bg) l c h / 0.9);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--color-divider);
+  padding-block: var(--space-4);
+}
+.nav__inner {
+  max-width: var(--content-wide); margin-inline: auto;
+  padding-inline: var(--space-6);
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-8);
+}
+.nav__logo {
+  display: flex; align-items: center; gap: var(--space-3);
+  text-decoration: none; color: var(--color-text);
+}
+.nav__logo-svg { flex-shrink: 0; }
+.nav__logo-name { font-family: var(--font-display); font-size: var(--text-sm); font-weight: 700; letter-spacing: -0.01em; }
+.nav__logo-role { font-size: var(--text-xs); color: var(--color-text-muted); display: none; }
+@media (min-width: 480px) { .nav__logo-role { display: block; } }
+.nav__links { display: none; align-items: center; gap: var(--space-6); list-style: none; }
+@media (min-width: 768px) { .nav__links { display: flex; } }
+.nav__links a {
+  font-size: var(--text-sm); color: var(--color-text-muted); text-decoration: none; font-weight: 500;
+}
+.nav__links a:hover { color: var(--color-primary); }
+.nav__actions { display: flex; align-items: center; gap: var(--space-3); }
+.theme-toggle {
+  width: 36px; height: 36px; border-radius: var(--radius-md);
+  color: var(--color-text-muted); display: flex; align-items: center; justify-content: center;
+}
+.theme-toggle:hover { color: var(--color-text); background: var(--color-surface-offset); }
+.btn {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-sm); font-weight: 600; padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-full); text-decoration: none; line-height: 1.4;
+  border: none; cursor: pointer;
+}
+.btn--primary {
+  background: var(--color-primary); color: #fff;
+}
+.btn--primary:hover { background: var(--color-primary-hover); }
+.btn--outline {
+  background: transparent; color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+}
+.btn--outline:hover { background: var(--color-primary-highlight); }
+.btn--ghost { background: transparent; color: var(--color-text-muted); }
+.btn--ghost:hover { color: var(--color-text); background: var(--color-surface-offset); }
+.nav-cta { display: none; }
+@media (min-width: 640px) { .nav-cta { display: inline-flex; } }
+
+/* Mobile nav */
+.nav__hamburger { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: var(--radius-md); color: var(--color-text-muted); }
+.nav__hamburger:hover { color: var(--color-text); background: var(--color-surface-offset); }
+@media (min-width: 768px) { .nav__hamburger { display: none; } }
+.mobile-menu {
+  display: none; flex-direction: column; gap: 0;
+  background: var(--color-surface); border-bottom: 1px solid var(--color-divider);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  padding: var(--space-4) var(--space-6); font-size: var(--text-base);
+  font-weight: 500; color: var(--color-text-muted); text-decoration: none;
+  border-bottom: 1px solid var(--color-divider);
+}
+.mobile-menu a:hover { color: var(--color-primary); background: var(--color-surface-offset); }
+
+/* ============ HERO ============ */
+.hero {
+  padding-block: clamp(var(--space-20), 12vw, var(--space-24));
+  position: relative; overflow: hidden;
+}
+.hero__bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: radial-gradient(ellipse 80% 60% at 70% 40%, oklch(from var(--color-primary) l c h / 0.08) 0%, transparent 70%),
+              radial-gradient(ellipse 50% 50% at 20% 80%, oklch(from var(--color-accent) l c h / 0.05) 0%, transparent 60%);
+}
+.hero__inner {
+  position: relative; z-index: 1;
+  max-width: var(--content-wide); margin-inline: auto; padding-inline: var(--space-6);
+  display: grid; grid-template-columns: 1fr; gap: var(--space-12); align-items: center;
+}
+@media (min-width: 768px) { .hero__inner { grid-template-columns: 1fr 400px; gap: var(--space-16); } }
+.hero__badge {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  background: var(--color-primary-highlight); color: var(--color-primary);
+  font-size: var(--text-xs); font-weight: 600; padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full); letter-spacing: 0.04em; text-transform: uppercase;
+  margin-bottom: var(--space-5); width: fit-content;
+}
+.hero__badge .dot { width: 6px; height: 6px; background: var(--color-primary); border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite; }
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+.hero__title {
+  font-family: var(--font-display); font-size: var(--text-3xl);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
+  color: var(--color-text); margin-bottom: var(--space-5);
+}
+.hero__title em { font-style: italic; color: var(--color-primary); }
+.hero__subtitle {
+  font-size: var(--text-base); color: var(--color-text-muted); line-height: 1.7;
+  max-width: 52ch; margin-bottom: var(--space-8);
+}
+.hero__ctas { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-bottom: var(--space-10); }
+.hero__stats { display: flex; flex-wrap: wrap; gap: var(--space-8); }
+.hero__stat-value {
+  font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700;
+  color: var(--color-text); line-height: 1;
+}
+.hero__stat-label { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+.hero__card {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl); padding: var(--space-6);
+  box-shadow: var(--shadow-lg);
+}
+.hero__profile-area { display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-5); }
+.hero__avatar {
+  width: 64px; height: 64px; border-radius: var(--radius-full);
+  background: var(--color-primary-highlight);
+  border: 2.5px solid var(--color-primary);
+  overflow: hidden; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;
+  color: var(--color-primary);
+}
+.hero__name-block .name { font-weight: 700; font-size: var(--text-base); color: var(--color-text); }
+.hero__name-block .degree { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 2px; }
+.hero__tool-label { font-size: var(--text-xs); font-weight: 600; color: var(--color-text-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: var(--space-3); }
+.hero__tools { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-5); }
+.tool-chip {
+  display: inline-flex; align-items: center; gap: var(--space-1);
+  background: var(--color-surface-offset); color: var(--color-text-muted);
+  font-size: var(--text-xs); font-weight: 600; padding: 3px var(--space-3);
+  border-radius: var(--radius-full); border: 1px solid var(--color-border);
+}
+.hero__divider { height: 1px; background: var(--color-divider); margin-block: var(--space-4); }
+.hero__open-to {
+  display: flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-xs); color: var(--color-success); font-weight: 600;
+}
+.hero__open-to .green-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--color-success); flex-shrink: 0; }
+
+/* ============ FEATURED PROJECTS ============ */
+.section-label {
+  font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--color-primary); margin-bottom: var(--space-3);
+}
+.section-heading {
+  font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700;
+  letter-spacing: -0.025em; color: var(--color-text); margin-bottom: var(--space-4); line-height: 1.2;
+}
+.section-sub { font-size: var(--text-base); color: var(--color-text-muted); max-width: 52ch; line-height: 1.7; }
+.projects-grid {
+  display: grid; grid-template-columns: 1fr; gap: var(--space-6); margin-top: var(--space-12);
+}
+@media (min-width: 768px) { .projects-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .projects-grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+.project-card {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl); overflow: hidden;
+  box-shadow: var(--shadow-sm); transition: box-shadow var(--transition-interactive), transform var(--transition-interactive);
+  display: flex; flex-direction: column;
+}
+.project-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.project-card__header {
+  padding: var(--space-6) var(--space-6) var(--space-4);
+  background: linear-gradient(135deg, var(--color-surface-offset) 0%, var(--color-surface) 100%);
+  border-bottom: 1px solid var(--color-divider);
+  display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-3);
+}
+.project-card__icon {
+  width: 44px; height: 44px; border-radius: var(--radius-lg);
+  background: var(--color-primary-highlight); color: var(--color-primary);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.project-card__tags { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+.project-tag {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+  background: var(--color-surface-dynamic); color: var(--color-text-muted);
+  padding: 2px 8px; border-radius: var(--radius-full);
+}
+.project-tag--primary { background: var(--color-primary-highlight); color: var(--color-primary); }
+.project-card__body { padding: var(--space-5) var(--space-6); flex: 1; }
+.project-card__title {
+  font-family: var(--font-display); font-weight: 700; font-size: var(--text-lg);
+  color: var(--color-text); margin-bottom: var(--space-2); line-height: 1.2;
+}
+.project-card__problem {
+  font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.65; margin-bottom: var(--space-4);
+}
+.project-card__metric-row { display: flex; gap: var(--space-4); margin-bottom: var(--space-4); }
+.metric-box {
+  flex: 1; background: var(--color-surface-offset); border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4); text-align: center;
+}
+.metric-box__val {
+  font-family: var(--font-display); font-weight: 700; font-size: var(--text-lg);
+  color: var(--color-primary); line-height: 1;
+}
+.metric-box__lbl { font-size: 10px; color: var(--color-text-muted); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.05em; }
+.project-card__tools { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+.project-card__footer {
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--color-divider);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.project-card__cta {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-sm); font-weight: 600; color: var(--color-primary); text-decoration: none;
+}
+.project-card__cta:hover { color: var(--color-primary-hover); gap: var(--space-3); }
+.project-card__github {
+  display: inline-flex; align-items: center; gap: var(--space-1);
+  font-size: var(--text-xs); color: var(--color-text-faint); text-decoration: none;
+}
+.project-card__github:hover { color: var(--color-text-muted); }
+
+/* ============ SKILLS ============ */
+.skills-section { background: var(--color-surface); border-top: 1px solid var(--color-divider); border-bottom: 1px solid var(--color-divider); }
+.skills-grid {
+  display: grid; grid-template-columns: 1fr; gap: var(--space-6); margin-top: var(--space-12);
+}
+@media (min-width: 640px) { .skills-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .skills-grid { grid-template-columns: repeat(4, 1fr); } }
+.skill-card {
+  background: var(--color-bg); border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg); padding: var(--space-5);
+}
+.skill-card__icon { width: 36px; height: 36px; color: var(--color-primary); margin-bottom: var(--space-3); }
+.skill-card__title { font-weight: 700; font-size: var(--text-sm); color: var(--color-text); margin-bottom: var(--space-3); }
+.skill-list { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
+.skill-list li { display: flex; align-items: center; gap: var(--space-2); }
+.skill-list li span { font-size: var(--text-sm); color: var(--color-text-muted); }
+.skill-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--color-primary); flex-shrink: 0; }
+
+/* ============ ABOUT ============ */
+.about__grid {
+  display: grid; grid-template-columns: 1fr; gap: var(--space-12); align-items: start;
+}
+@media (min-width: 768px) { .about__grid { grid-template-columns: 360px 1fr; } }
+.about__photo-col { display: flex; flex-direction: column; gap: var(--space-5); }
+.about__photo-card {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl); overflow: hidden; box-shadow: var(--shadow-md);
+}
+.about__photo-placeholder {
+  aspect-ratio: 4/5; background: linear-gradient(135deg, var(--color-primary-highlight) 0%, var(--color-surface-dynamic) 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-3);
+  color: var(--color-primary); font-family: var(--font-display); font-size: 3rem; font-weight: 700;
+}
+.about__photo-placeholder .hint { font-family: var(--font-body); font-size: var(--text-xs); color: var(--color-text-muted); font-style: italic; }
+.about__photo-meta {
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--color-divider);
+  background: var(--color-surface-offset);
+}
+.about__photo-meta .name { font-weight: 700; font-size: var(--text-sm); color: var(--color-text); }
+.about__photo-meta .degree { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 2px; }
+.about__edu-card {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5);
+}
+.about__edu-title { font-weight: 700; font-size: var(--text-sm); color: var(--color-text); margin-bottom: var(--space-1); }
+.about__edu-degree { font-size: var(--text-sm); color: var(--color-primary); font-weight: 600; margin-bottom: var(--space-1); }
+.about__edu-meta { font-size: var(--text-xs); color: var(--color-text-muted); }
+.about__text { display: flex; flex-direction: column; gap: var(--space-6); }
+.about__text p { font-size: var(--text-base); color: var(--color-text-muted); line-height: 1.75; }
+.about__text strong { color: var(--color-text); font-weight: 600; }
+.about__advantage {
+  background: var(--color-primary-highlight); border-radius: var(--radius-lg);
+  padding: var(--space-5); border-left: 3px solid var(--color-primary);
+}
+.about__advantage p { font-size: var(--text-sm); color: var(--color-primary); font-weight: 600; font-style: italic; max-width: none; }
+.certs-row { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
+.cert-badge {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  background: var(--color-success-highlight); color: var(--color-success);
+  font-size: var(--text-xs); font-weight: 600; padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+}
+
+/* ============ CTA BAND ============ */
+.cta-band {
+  background: linear-gradient(135deg, var(--color-primary) 0%, oklch(from var(--color-primary) calc(l - 0.1) c calc(h + 20)) 100%);
+  padding-block: clamp(var(--space-16), 8vw, var(--space-20));
+  text-align: center;
+}
+.cta-band h2 {
+  font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700;
+  color: #fff; letter-spacing: -0.025em; margin-bottom: var(--space-4);
+}
+.cta-band p { font-size: var(--text-base); color: oklch(1 0 0 / 0.8); margin-bottom: var(--space-8); max-width: 48ch; margin-inline: auto; }
+.cta-band__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center; }
+.btn--white { background: #fff; color: var(--color-primary); font-weight: 700; }
+.btn--white:hover { background: oklch(1 0 0 / 0.9); }
+.btn--outline-white { background: transparent; color: #fff; border: 1.5px solid oklch(1 0 0 / 0.5); font-weight: 600; }
+.btn--outline-white:hover { background: oklch(1 0 0 / 0.1); border-color: #fff; }
+
+/* ============ FOOTER ============ */
+.footer {
+  background: var(--color-surface); border-top: 1px solid var(--color-divider);
+  padding-block: var(--space-12);
+}
+.footer__inner {
+  max-width: var(--content-wide); margin-inline: auto; padding-inline: var(--space-6);
+  display: grid; grid-template-columns: 1fr; gap: var(--space-10);
+}
+@media (min-width: 640px) { .footer__inner { grid-template-columns: 2fr 1fr 1fr; } }
+.footer__brand .name { font-family: var(--font-display); font-weight: 700; font-size: var(--text-base); color: var(--color-text); margin-bottom: var(--space-2); }
+.footer__brand .tagline { font-size: var(--text-sm); color: var(--color-text-muted); max-width: 32ch; }
+.footer__heading { font-weight: 700; font-size: var(--text-sm); color: var(--color-text); margin-bottom: var(--space-4); }
+.footer__links { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
+.footer__links a { font-size: var(--text-sm); color: var(--color-text-muted); text-decoration: none; }
+.footer__links a:hover { color: var(--color-primary); }
+.footer__bottom {
+  max-width: var(--content-wide); margin-inline: auto; padding-inline: var(--space-6);
+  padding-top: var(--space-6); margin-top: var(--space-8);
+  border-top: 1px solid var(--color-divider);
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-4);
+}
+.footer__bottom p { font-size: var(--text-xs); color: var(--color-text-faint); }
+.social-links { display: flex; gap: var(--space-3); }
+.social-link {
+  width: 34px; height: 34px; border-radius: var(--radius-md);
+  border: 1px solid var(--color-border); color: var(--color-text-muted);
+  display: flex; align-items: center; justify-content: center; text-decoration: none;
+}
+.social-link:hover { color: var(--color-primary); border-color: var(--color-primary); background: var(--color-primary-highlight); }
+
+/* ============ SCROLL ANIMATIONS ============ */
+.fade-in { opacity: 1; }
+@supports (animation-timeline: scroll()) {
+  .fade-in {
+    opacity: 0;
+    animation: reveal-fade linear both;
+    animation-timeline: view(); animation-range: entry 0% entry 80%;
+  }
+}
+@keyframes reveal-fade { to { opacity: 1; } }
+</style>
+</head>
+<body>
+
+<!-- SKIP LINK -->
+<a href="#main" class="sr-only">Skip to main content</a>
+
+<!-- NAVIGATION -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo" aria-label="Ananda A. — Home">
+      <svg class="nav__logo-svg" aria-hidden="true" width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="8" fill="var(--color-primary)"/>
+        <path d="M8 23L13 9l5 9 3-5 3 10" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="24" cy="10" r="2.5" fill="white" opacity="0.7"/>
+      </svg>
+      <div>
+        <div class="nav__logo-name">Ananda A.</div>
+        <div class="nav__logo-role">Healthcare Data Analyst</div>
+      </div>
+    </a>
+    <ul class="nav__links" role="list">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav__actions">
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="#contact" class="btn btn--primary nav-cta">Hire Me</a>
+      <button class="nav__hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu" role="menu">
+    <a href="#projects" role="menuitem">Projects</a>
+    <a href="#skills" role="menuitem">Skills</a>
+    <a href="#about" role="menuitem">About</a>
+    <a href="#contact" role="menuitem">Contact</a>
+    <a href="#contact" role="menuitem" style="color:var(--color-primary);font-weight:700;">Hire Me →</a>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__inner">
+    <div class="hero__content">
+      <div class="hero__badge">
+        <span class="dot"></span>
+        Open to Work
+      </div>
+      <h1 class="hero__title" id="hero-title">
+        Healthcare <em>Data Analyst</em><br>with a Clinical Edge
+      </h1>
+      <p class="hero__subtitle">
+        I bridge the gap between medical operations and data-driven decisions. With a background in Medical Laboratory Technology, I analyze clinical workflows, patient data, and healthcare business performance using <strong>SQL, Python, Tableau, and Looker Studio</strong>.
+      </p>
+      <div class="hero__ctas">
+        <a href="#projects" class="btn btn--primary">
+          <i data-lucide="bar-chart-2" style="width:16px;height:16px;"></i>
+          View Projects
+        </a>
+        <a href="#contact" class="btn btn--outline">
+          <i data-lucide="mail" style="width:16px;height:16px;"></i>
+          Let's Connect
+        </a>
+      </div>
+      <div class="hero__stats">
+        <div>
+          <div class="hero__stat-value">3</div>
+          <div class="hero__stat-label">Portfolio Projects</div>
+        </div>
+        <div>
+          <div class="hero__stat-value">5+</div>
+          <div class="hero__stat-label">Tools Mastered</div>
+        </div>
+        <div>
+          <div class="hero__stat-value">100%</div>
+          <div class="hero__stat-label">Healthcare Domain Focus</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero__card" aria-label="Profile card">
+      <div class="hero__profile-area">
+        <div class="hero__avatar" aria-label="Profile photo placeholder — replace with your actual photo">AA</div>
+        <div class="hero__name-block">
+          <div class="name">Ananda A.</div>
+          <div class="degree">S.Tr.Kes — Medical Lab Technologist</div>
+        </div>
+      </div>
+      <div class="hero__tool-label">Core Tools</div>
+      <div class="hero__tools">
+        <span class="tool-chip">SQL</span>
+        <span class="tool-chip">Python</span>
+        <span class="tool-chip">Tableau</span>
+        <span class="tool-chip">Looker Studio</span>
+        <span class="tool-chip">Excel</span>
+        <span class="tool-chip">SPSS</span>
+      </div>
+      <div class="hero__divider"></div>
+      <div class="hero__open-to">
+        <span class="green-dot"></span>
+        Actively seeking Healthcare Data Analyst roles
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects" aria-labelledby="projects-heading">
+  <div class="container--wide">
+    <div class="fade-in">
+      <div class="section-label">Portfolio</div>
+      <h2 class="section-heading" id="projects-heading">3 Projects. Real Problems. Measurable Findings.</h2>
+      <p class="section-sub">Each project was built around an actual business or clinical problem — not just a technical exercise. Click any project for the full case study.</p>
+    </div>
+    <div class="projects-grid">
+
+      <!-- PROJECT 1 — TAT -->
+      <div class="project-card fade-in" role="article">
+        <div class="project-card__header">
+          <div class="project-card__icon" aria-hidden="true"><i data-lucide="clock-3" style="width:22px;height:22px;"></i></div>
+          <div class="project-card__tags">
+            <span class="project-tag project-tag--primary">Clinical Ops</span>
+            <span class="project-tag">Featured</span>
+          </div>
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">Clinical Laboratory TAT Optimization</h3>
+          <p class="project-card__problem">Slow laboratory turnaround time was delaying clinical decisions and reducing patient throughput. This project identifies the bottlenecks and recommends process improvements.</p>
+          <div class="project-card__metric-row">
+            <div class="metric-box"><div class="metric-box__val">TAT</div><div class="metric-box__lbl">Key KPI</div></div>
+            <div class="metric-box"><div class="metric-box__val">Python</div><div class="metric-box__lbl">Primary Tool</div></div>
+          </div>
+          <div class="project-card__tools">
+            <span class="tool-chip">Python</span>
+            <span class="tool-chip">SQL</span>
+            <span class="tool-chip">Excel</span>
+            <span class="tool-chip">Statistics</span>
+          </div>
+        </div>
+        <div class="project-card__footer">
+          <a href="project-tat.html" class="project-card__cta">
+            Read Case Study <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+          </a>
+          <a href="https://github.com/AnandaA-blip/Optimization-of-Clinical-Laboratory-Turnaround-Time-TAT-" target="_blank" rel="noopener noreferrer" class="project-card__github">
+            <i data-lucide="github" style="width:13px;height:13px;"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 — RFM -->
+      <div class="project-card fade-in" role="article">
+        <div class="project-card__header">
+          <div class="project-card__icon" aria-hidden="true"><i data-lucide="users" style="width:22px;height:22px;"></i></div>
+          <div class="project-card__tags">
+            <span class="project-tag project-tag--primary">Medical Sales</span>
+          </div>
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">RFM Analysis — Medical Sales Segmentation</h3>
+          <p class="project-card__problem">A medical distributor needed to understand which customers were high-value, at-risk, or dormant to prioritize outreach and improve retention strategy.</p>
+          <div class="project-card__metric-row">
+            <div class="metric-box"><div class="metric-box__val">RFM</div><div class="metric-box__lbl">Method</div></div>
+            <div class="metric-box"><div class="metric-box__val">Segments</div><div class="metric-box__lbl">Output</div></div>
+          </div>
+          <div class="project-card__tools">
+            <span class="tool-chip">Python</span>
+            <span class="tool-chip">Looker Studio</span>
+            <span class="tool-chip">Excel</span>
+          </div>
+        </div>
+        <div class="project-card__footer">
+          <a href="project-rfm.html" class="project-card__cta">
+            Read Case Study <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+          </a>
+          <a href="https://github.com/AnandaA-blip/RFM-Analysis-Medical-Sales-" target="_blank" rel="noopener noreferrer" class="project-card__github">
+            <i data-lucide="github" style="width:13px;height:13px;"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- PROJECT 3 — Promo -->
+      <div class="project-card fade-in" role="article">
+        <div class="project-card__header">
+          <div class="project-card__icon" aria-hidden="true"><i data-lucide="tag" style="width:22px;height:22px;"></i></div>
+          <div class="project-card__tags">
+            <span class="project-tag project-tag--primary">Retail Analytics</span>
+          </div>
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">Retail Promo Markdown Effectiveness</h3>
+          <p class="project-card__problem">Are promotional markdowns actually driving revenue? This project measures the true lift from discount events and identifies which product categories respond best to price reductions.</p>
+          <div class="project-card__metric-row">
+            <div class="metric-box"><div class="metric-box__val">ROI</div><div class="metric-box__lbl">Key Metric</div></div>
+            <div class="metric-box"><div class="metric-box__val">Tableau</div><div class="metric-box__lbl">Viz Tool</div></div>
+          </div>
+          <div class="project-card__tools">
+            <span class="tool-chip">SQL</span>
+            <span class="tool-chip">Python</span>
+            <span class="tool-chip">Tableau</span>
+            <span class="tool-chip">Excel</span>
+          </div>
+        </div>
+        <div class="project-card__footer">
+          <a href="project-promo.html" class="project-card__cta">
+            Read Case Study <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section skills-section" id="skills" aria-labelledby="skills-heading">
+  <div class="container--wide">
+    <div class="fade-in">
+      <div class="section-label">Technical Skills</div>
+      <h2 class="section-heading" id="skills-heading">Tools That Turn Data Into Decisions</h2>
+      <p class="section-sub">Every skill below has been applied in real project work — not just learned in isolation.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card fade-in">
+        <div class="skill-card__icon"><i data-lucide="database" style="width:28px;height:28px;"></i></div>
+        <div class="skill-card__title">Data Querying</div>
+        <ul class="skill-list" role="list">
+          <li><span class="skill-dot"></span><span>SQL — joins, aggregations, subqueries</span></li>
+          <li><span class="skill-dot"></span><span>Data cleaning & transformation</span></li>
+          <li><span class="skill-dot"></span><span>Query optimization</span></li>
+        </ul>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-card__icon"><i data-lucide="code-2" style="width:28px;height:28px;"></i></div>
+        <div class="skill-card__title">Programming & Analysis</div>
+        <ul class="skill-list" role="list">
+          <li><span class="skill-dot"></span><span>Python — pandas, numpy, seaborn</span></li>
+          <li><span class="skill-dot"></span><span>SPSS — statistical testing</span></li>
+          <li><span class="skill-dot"></span><span>EDA & hypothesis testing</span></li>
+        </ul>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-card__icon"><i data-lucide="bar-chart-3" style="width:28px;height:28px;"></i></div>
+        <div class="skill-card__title">Data Visualization</div>
+        <ul class="skill-list" role="list">
+          <li><span class="skill-dot"></span><span>Tableau — dashboards & stories</span></li>
+          <li><span class="skill-dot"></span><span>Looker Studio — live reporting</span></li>
+          <li><span class="skill-dot"></span><span>Excel — pivot tables, charts</span></li>
+        </ul>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-card__icon"><i data-lucide="stethoscope" style="width:28px;height:28px;"></i></div>
+        <div class="skill-card__title">Healthcare Domain</div>
+        <ul class="skill-list" role="list">
+          <li><span class="skill-dot"></span><span>Clinical lab workflows & TAT</span></li>
+          <li><span class="skill-dot"></span><span>Medical terminology & ICD coding</span></li>
+          <li><span class="skill-dot"></span><span>Patient flow & operational KPIs</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about" aria-labelledby="about-heading">
+  <div class="container--wide">
+    <div class="about__grid">
+      <div class="about__photo-col fade-in">
+        <div class="about__photo-card">
+          <div class="about__photo-placeholder" aria-label="Profile photo — replace with your actual headshot">
+            AA
+            <span class="hint">Replace with your photo</span>
+          </div>
+          <div class="about__photo-meta">
+            <div class="name">Ananda A.</div>
+            <div class="degree">S.Tr.Kes · Medical Laboratory Technologist</div>
+          </div>
+        </div>
+        <div class="about__edu-card">
+          <div class="about__edu-title">🎓 Education</div>
+          <div class="about__edu-degree">D4 — Medical Laboratory Technology</div>
+          <div class="about__edu-meta">Fresh Graduate · Indonesia · 2025</div>
+        </div>
+        <div class="certs-row">
+          <span class="cert-badge"><i data-lucide="check-circle" style="width:12px;height:12px;"></i>SQL Certified</span>
+          <span class="cert-badge"><i data-lucide="check-circle" style="width:12px;height:12px;"></i>Tableau</span>
+          <span class="cert-badge"><i data-lucide="check-circle" style="width:12px;height:12px;"></i>Python</span>
+        </div>
+      </div>
+      <div class="about__text fade-in">
+        <div>
+          <div class="section-label">About Me</div>
+          <h2 class="section-heading" id="about-heading">Where Clinical Knowledge Meets Data Thinking</h2>
+        </div>
+        <p>I'm a fresh graduate in Medical Laboratory Technology with a deep interest in the data side of healthcare. During my studies, I noticed how much decision-making in clinical environments depended on data — and how often that data was underutilized. That curiosity pushed me to learn SQL, Python, Tableau, and Looker Studio.</p>
+        <p>My background gives me something most data analysts don't have: <strong>direct understanding of clinical workflows, lab processes, and healthcare KPIs</strong>. I don't just analyze healthcare data — I understand what it means in a clinical context and what decisions it should drive.</p>
+        <p>I've built three portfolio projects that reflect this intersection: optimizing laboratory turnaround time, segmenting medical sales customers by value, and measuring retail promotion effectiveness. Each one was built around a real question — not just to practice tools.</p>
+        <div class="about__advantage">
+          <p>"Most data analysts learn the tools first and the domain later. I have both — and that's a rare combination for healthcare analytics roles."</p>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-2);">
+          <a href="#contact" class="btn btn--primary">Let's Connect</a>
+          <a href="#" class="btn btn--outline" onclick="alert('Replace this with your actual resume PDF link!'); return false;">
+            <i data-lucide="file-text" style="width:15px;height:15px;"></i>
+            Download Resume
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" aria-labelledby="cta-heading">
+  <div class="container">
+    <h2 id="cta-heading">Looking for a Healthcare Data Analyst?</h2>
+    <p>I'm actively seeking roles where data can improve clinical decisions, operational efficiency, and patient outcomes. Let's talk about how I can contribute to your team.</p>
+    <div class="cta-band__actions">
+      <a href="mailto:your@email.com" class="btn btn--white">
+        <i data-lucide="mail" style="width:16px;height:16px;"></i>
+        Send Me an Email
+      </a>
+      <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="btn btn--outline-white">
+        <i data-lucide="linkedin" style="width:16px;height:16px;"></i>
+        View LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact" aria-labelledby="contact-heading">
+  <div class="container" style="max-width:600px;">
+    <div class="fade-in" style="text-align:center;margin-bottom:var(--space-10);">
+      <div class="section-label">Contact</div>
+      <h2 class="section-heading" id="contact-heading">Let's Start a Conversation</h2>
+      <p class="section-sub" style="margin-inline:auto;">Whether you have a job opportunity, a collaboration idea, or just want to connect — I'd love to hear from you.</p>
+    </div>
+    <form style="display:flex;flex-direction:column;gap:var(--space-5);" onsubmit="handleForm(event)">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
+        <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+          <label style="font-size:var(--text-sm);font-weight:600;color:var(--color-text);" for="fname">First Name</label>
+          <input id="fname" type="text" placeholder="Jane" required
+            style="padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);border:1.5px solid var(--color-border);background:var(--color-surface);color:var(--color-text);font-size:var(--text-sm);outline:none;transition:border-color var(--transition-interactive);"
+            onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='var(--color-border)'">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+          <label style="font-size:var(--text-sm);font-weight:600;color:var(--color-text);" for="lname">Last Name</label>
+          <input id="lname" type="text" placeholder="Smith" required
+            style="padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);border:1.5px solid var(--color-border);background:var(--color-surface);color:var(--color-text);font-size:var(--text-sm);outline:none;transition:border-color var(--transition-interactive);"
+            onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='var(--color-border)'">
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+        <label style="font-size:var(--text-sm);font-weight:600;color:var(--color-text);" for="email">Email Address</label>
+        <input id="email" type="email" placeholder="jane@hospital.com" required
+          style="padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);border:1.5px solid var(--color-border);background:var(--color-surface);color:var(--color-text);font-size:var(--text-sm);outline:none;transition:border-color var(--transition-interactive);"
+          onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='var(--color-border)'">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+        <label style="font-size:var(--text-sm);font-weight:600;color:var(--color-text);" for="message">Message</label>
+        <textarea id="message" rows="5" placeholder="Hi Ananda, I came across your project on lab TAT optimization and would love to discuss a potential opportunity..." required
+          style="padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);border:1.5px solid var(--color-border);background:var(--color-surface);color:var(--color-text);font-size:var(--text-sm);outline:none;resize:vertical;transition:border-color var(--transition-interactive);"
+          onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='var(--color-border)'"></textarea>
+      </div>
+      <button type="submit" class="btn btn--primary" style="align-self:flex-start;padding:var(--space-3) var(--space-8);">
+        <i data-lucide="send" style="width:15px;height:15px;"></i>
+        Send Message
+      </button>
+      <div id="form-success" style="display:none;background:var(--color-success-highlight);color:var(--color-success);padding:var(--space-4);border-radius:var(--radius-md);font-size:var(--text-sm);font-weight:600;">
+        ✅ Message sent! I'll reply within 24 hours.
+      </div>
+    </form>
+    <div style="display:flex;flex-wrap:wrap;gap:var(--space-6);margin-top:var(--space-10);padding-top:var(--space-8);border-top:1px solid var(--color-divider);">
+      <a href="mailto:your@email.com" style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--color-text-muted)'">
+        <i data-lucide="mail" style="width:15px;height:15px;"></i> your@email.com
+      </a>
+      <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--color-text-muted)'">
+        <i data-lucide="linkedin" style="width:15px;height:15px;"></i> LinkedIn
+      </a>
+      <a href="https://github.com/AnandaA-blip" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--color-text-muted)'">
+        <i data-lucide="github" style="width:15px;height:15px;"></i> GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <div class="name">Ananda A.</div>
+      <div class="tagline">Healthcare Data Analyst · Medical Laboratory Technologist · Indonesia</div>
+    </div>
+    <div>
+      <div class="footer__heading">Projects</div>
+      <ul class="footer__links" role="list">
+        <li><a href="project-tat.html">Clinical Lab TAT</a></li>
+        <li><a href="project-rfm.html">RFM Medical Sales</a></li>
+        <li><a href="project-promo.html">Promo Effectiveness</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer__heading">Links</div>
+      <ul class="footer__links" role="list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="https://github.com/AnandaA-blip" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p>© 2026 Ananda A. · Healthcare Data Analyst</p>
+    <div class="social-links">
+      <a href="https://github.com/AnandaA-blip" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+        <i data-lucide="github" style="width:15px;height:15px;"></i>
+      </a>
+      <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+        <i data-lucide="linkedin" style="width:15px;height:15px;"></i>
+      </a>
+      <a href="mailto:your@email.com" class="social-link" aria-label="Email">
+        <i data-lucide="mail" style="width:15px;height:15px;"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+lucide.createIcons();
+
+// Theme toggle
+(function(){
+  const t=document.querySelector('[data-theme-toggle]'), r=document.documentElement;
+  let d=r.getAttribute('data-theme')||( matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  r.setAttribute('data-theme',d);
+  function updateIcon(){
+    if(!t)return;
+    t.innerHTML=d==='dark'
+      ?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+      :'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  }
+  updateIcon();
+  t&&t.addEventListener('click',()=>{d=d==='dark'?'light':'dark';r.setAttribute('data-theme',d);updateIcon();});
+})();
+
+// Mobile menu
+const btn=document.getElementById('hamburgerBtn'), menu=document.getElementById('mobileMenu');
+btn&&btn.addEventListener('click',()=>{const o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);});
+menu&&menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');btn.setAttribute('aria-expanded','false');}));
+
+// Contact form demo
+function handleForm(e){
+  e.preventDefault();
+  document.getElementById('form-success').style.display='block';
+  e.target.reset();
+  setTimeout(()=>{document.getElementById('form-success').style.display='none';},5000);
+}
+</script>
+</body>
+</html>
